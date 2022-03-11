@@ -21,7 +21,9 @@ public class SharedDataBuilder {
 				Module subM = new Module(sub);
 				subModules.add(new Module(sub));
 				SharedData.allModules.add(subM);
-				SharedData.subTree.put(sub, new HashSet<>());
+				if(!SharedData.subTree.containsKey(sub)) {
+					SharedData.subTree.put(sub, new HashSet<>());
+				}
 			});
 			SharedData.subTree.put(key, subModules);
 			SharedData.allModules.add(new Module(key));

@@ -1,7 +1,6 @@
 package com.dronworks.modulebuilder;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -30,7 +29,7 @@ public class BuilderTasksTest {
 	
 	@ParameterizedTest
 	@MethodSource("generateData")
-	public void noConnectionsAllPrinted(List<String> expected, String filename) {
+	public void testRealInputs(List<String> expected, String filename) {
 		Map<String, List<String>> readJsonFile = jsonFileReader.readJsonFile(new File(String.format("src/main/resources/%s.txt", filename)));
 		SharedDataBuilder sharedDataBuilder = new SharedDataBuilder();
 		sharedDataBuilder.buildData(readJsonFile);
@@ -45,10 +44,13 @@ public class BuilderTasksTest {
 	        Arguments.of(Arrays.asList("O U X N T M Y Z"), "JsonExampleB"),
 	        Arguments.of(Arrays.asList("B D C A", "B A D C", "B D A C"), "ABCDB"),
 	        Arguments.of(Arrays.asList("a"), "MapOfLeaf"),
-	        Arguments.of(Arrays.asList("A B"), "RootBRoot"),
+	        Arguments.of(Arrays.asList("A B", "B A"), "RootBRoot"),
 	        Arguments.of(Arrays.asList("b a"), "RootLeaf"),
-	        Arguments.of(Arrays.asList("b"), "RootRoot")
-
+	        Arguments.of(Arrays.asList("b"), "RootRoot"),
+	        Arguments.of(Arrays.asList("a b c", "b a c", "b c a", "a c b", "c a b", "c b a"), "NoDependencies"),
+	        Arguments.of(Arrays.asList(""), "emptyJson"),
+	        Arguments.of(Arrays.asList("N M T Y O U X B A D C Z","N M T Y O U X A D Z C B",
+	        		"O U X N M T Y A D C Z B"), "BigExample")
 	    );
 	}
 

@@ -31,6 +31,16 @@ public class JsonFileReaderTest {
 	}
 	
 	@Test
+	public void notSupportedDuplicatesThrowsException() {
+		assertThrows(RuntimeException.class,  () -> jsonFileReader.readJsonFile(new File("src/main/resources/Duplicates.txt")));
+	}
+	
+	@Test
+	public void notSupportedDuplicatesKeysThrowsException() {
+		assertThrows(RuntimeException.class,  () -> jsonFileReader.readJsonFile(new File("src/main/resources/DuplicatesKeys.txt")));
+	}
+	
+	@Test
 	public void simpleJsonReturnMap() {
 		Map<String, List<String>> readJsonFile = jsonFileReader.readJsonFile(new File("src/main/resources/SimpleJson.txt"));
 		assertNotNull(readJsonFile.get("a"));
