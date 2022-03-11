@@ -16,4 +16,4 @@ Comments:
 	- I think a better approach is to throw some exception when a loop is located in the Json data.
 4 - I dont support duplicates in the Json. Example { "a":["b"], "a":["b"]}
 5 - I dont support multiple keys with same value. Example { "a": ["b"], "a": ["c"]}
-6 - Unit test built on list of possible options, and may fail if an option is not located in them. This DON'T mean the code is incorrect, just that I din't cover a permentation.
+6 - Unit test built on list of possible options, and may fail if an option is not located in them. This DON'T mean the code is incorrect, just that I din't cover a permutation.
