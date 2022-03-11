@@ -17,5 +17,5 @@ public class StringTools {
 	    return stringToCharacterSet(container).containsAll
 	               (stringToCharacterSet(containee));
 	}
-
+	
 }
